@@ -4,8 +4,8 @@
     "memory": 256,
     "ssh_port": 22,
     "ssh_wait_timeout": "10000s",
-    "iso_url": "http://cdimage.debian.org/cdimage/weekly-builds/amd64/iso-cd/debian-testing-amd64-netinst.iso",
-    "iso_md5": "0b92aae7ecab45437b96d80aa9ad4e87",
+    "iso_url": "http://cdimage.debian.org/cdimage/jessie_di_rc1/amd64/iso-cd/debian-jessie-DI-rc1-amd64-netinst.iso",
+    "iso_md5": "2ab639aa971279f2cfbe45ea01a51529",
     "vm_name": "debian-8-testing"
   },
   "builders": [
