@@ -43,6 +43,16 @@ $ packer build -only vmware debian-7-wheezy.json
 ```
 *NOTE* Unfortunately Packer has a bug and will not recognize the -only option until [this bug](https://github.com/mitchellh/packer/pull/1402) will be open.
 
+#### Debian Testing
+
+To build a debian 8 testing box (jessie), use the following:
+
+```bash
+$ packer build --only virtualbox debian-8-testing.json
+```
+
+*NOTE*: Debian testing ISO is updated weekly, so, you might need to update the checksum on debian-8-testing.json (iso_md5).
+
 ### Install your new box
 
 ```bash
