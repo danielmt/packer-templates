@@ -1,23 +1,15 @@
-# Tech-Angels Packer templates
+# Debian Packer Templates
 
-## Boxes description
+The current and only template was created for Debian 7.8.0 VM boxes.
+These boxes are "vanilla" with a minimal setup, 256MB RAM, 1 CPU and includes Puppet.
 
-The current and only template was created for Debian 7.4.0 VM boxes, because this is the default environment at Tech-Angels.
-The boxes are "vanilla" with a minimal setup, 256MB RAM, 1 CPU. These settings can be easily changed in vagrant.
-
-## Direct Download
-
-Packaged boxes are available for vmware and virtualbox:
-
-* https://www.dropbox.com/s/t2taop7msj0to2u/packer_virtualbox_virtualbox.box (sha: 55b96389cd2175d91d225dfdfcfece044cc4755b)
-* https://www.dropbox.com/s/wezr7ucgxa8tuh8/packer_vmware_vmware.box (sha: 0a512b92202cd6c12d3c2ee91c08b9dc416e325f)
+These settings can be easily changed in vagrant.
 
 ## Prerequisites
 
 * Packer (>= 0.5.0)(http://www.packer.io/downloads.html)
 * Vagrant (>= 1.2.4)(http://downloads.vagrantup.com/)
-* Vmware or Virtualbox
-* Vagrant vmware plugin if you're using vmware (http://www.vagrantup.com/vmware)
+* VirtualBox or VMWare
 
 ### Installing Packer via Homebrew
 
@@ -28,11 +20,11 @@ $ brew install packer
 
 ## Configure the vagrant box
 
-Edit the ta-debian-7-wheezy.json (or the other one you prefer) and check the variables at the beginning of the file.
+Edit the debian-7-wheezy-virtualbox.json and check the variables at the beginning of the file.
 
 *Note*:
 
-The debian iso file name contains the version number and, as soon as a new release will be out and the 770 will be removed from the debian servers, the debian-770-wheezy.json file will be outdated and you'll get the "ISO download failed" error after running the build command.
+The debian iso file name contains the version number and, as soon as a new release will be out and the 780 will be removed from the debian servers, the debian-780-wheezy-virtualbox.json file will be outdated and you'll get the "ISO download failed" error after running the build command.
 To fix the issue go on http://cdimage.debian.org/debian-cd/current/amd64/iso-cd/, check which is the latest net-inst version and copy its checksum from the MD5SUMS file. Then edit the .json file and update these variables at the beginning of the .json file:
 * "iso_url": update the link to the iso file
 * "iso_md5": insert the new MD5 checksum
@@ -41,29 +33,26 @@ To fix the issue go on http://cdimage.debian.org/debian-cd/current/amd64/iso-cd/
 ## Build vagrant box
 
 ```bash
-$ packer build ta-debian-7-wheezy.json
+$ packer build debian-7-wheezy-virtualbox.json
 ```
 
 or optionnaly, select only one provider, for example ```vmware```:
 
 ```bash
-$ packer build -only vmware ta-debian-7-wheezy.json
+$ packer build -only vmware debian-7-wheezy.json
 ```
 *NOTE* Unfortunately Packer has a bug and will not recognize the -only option until [this bug](https://github.com/mitchellh/packer/pull/1402) will be open.
-
-Meanwhile you can use the ta-debian-7-wheezy-virtualbox.json or ta-debian-7-wheezy-virtual-puppet.json instead of ta-debian-7-wheezy.json
-
 
 ### Install your new box
 
 ```bash
-$ vagrant box add ta-debian-7-wheezy ./packer_vmware-iso_vmware.box
+$ vagrant box add debian-7-wheezy ./debian-780-wheezy-vbox.box
 ```
 
 or
 
 ```bash
-$ vagrant box add ta-debian-7-wheezy ./packer_virtualbox-iso_virtualbox.box
+$ vagrant box add debian-7-wheezy ./debian-780-wheezy.box
 ```
 
 The VM image has been imported to vagrant, it's now available on your system.
@@ -84,7 +73,7 @@ Vagrant.configure("2") do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "ta-debian-7-wheezy"
+  config.vm.box = "debian-780-wheezy"
 
   # Make ssh login secure
   # config.ssh.private_key_path = '~/.ssh/id_rsa'
@@ -117,8 +106,4 @@ $ echo ".vagrant" >> ~/.gitignore
 
 ## Credits
 
-  Many thanks to [Mitchell Hashimoto](https://github.com/mitchellh/) for his awesome work on [Packer](https://github.com/mitchellh/packer) and [Vagrant](https://github.com/mitchellh/vagrant).
-
-  Tech-Angels Inc. - http://www.tech-angels.com/
-
-  [![Tech-Angels](http://media.tumblr.com/tumblr_m5ay3bQiER1qa44ov.png)](http://www.tech-angels.com)
+  This project is based on [Tech Angels Packer templates](https://github.com/tech-angels/packer-templates/)
