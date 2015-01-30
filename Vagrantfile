@@ -18,5 +18,5 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
  ## Using NFS as it has much better performance
  ## On linux install nfs-kernel-server, MacOS works by default
  ## Will ask for root password to set some things up
- config.vm.synced_folder ".", "/vagrant", :nfs => true
+ #config.vm.synced_folder ".", "/vagrant", :nfs => true
 end
