@@ -1,7 +1,7 @@
 {
 "variables": {
     "core": 1,
-    "memory": 2048,
+    "memory": 256,
     "ssh_port": 22,
     "ssh_wait_timeout": "10000s",
     "iso_url": "http://cdimage.debian.org/debian-cd/7.8.0/amd64/iso-cd/debian-7.8.0-amd64-netinst.iso",
