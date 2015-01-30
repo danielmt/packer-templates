@@ -15,4 +15,4 @@ build-vmware: clean-vmware
 	packer build --only vmware-iso debian-7-wheezy.json
 
 build-testing: clean-virtualbox
-	packer build debian-8-testing-virtualbox.json
+	packer build debian-8-jessie.json

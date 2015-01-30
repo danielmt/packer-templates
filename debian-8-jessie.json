@@ -6,7 +6,7 @@
     "ssh_wait_timeout": "10000s",
     "iso_url": "http://cdimage.debian.org/cdimage/jessie_di_rc1/amd64/iso-cd/debian-jessie-DI-rc1-amd64-netinst.iso",
     "iso_md5": "2ab639aa971279f2cfbe45ea01a51529",
-    "vm_name": "debian-8-testing"
+    "vm_name": "debian-8-jessie"
   },
   "builders": [
     {
