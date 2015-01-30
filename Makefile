@@ -1,10 +1,18 @@
 .PHONY: build build-vmware build-testing
 
-build:
+clean-all: clean-virtualbox clean-vmware
+
+clean-virtualbox:
+	@rm -rf output-virtualbox-iso
+
+clean-vmware:
+	@rm -rf output-vmware-iso
+
+build: clean-virtualbox
 	packer build debian-7-wheezy-virtualbox.json
 
-build-vmware:
+build-vmware: clean-vmware
 	packer build --only vmware-iso debian-7-wheezy.json
 
-build-testing:
+build-testing: clean-virtualbox
 	packer build debian-8-testing-virtualbox.json
