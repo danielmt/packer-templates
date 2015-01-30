@@ -41,7 +41,7 @@ or optionnaly, select only one provider, for example ```vmware```:
 ```bash
 $ packer build -only vmware debian-7-wheezy.json
 ```
-*NOTE* Unfortunately Packer has a bug and will not recognize the -only option until [this bug](https://github.com/mitchellh/packer/pull/1402) will be open.
+*NOTE*: Unfortunately Packer has a bug and will not recognize the -only option until [this bug](https://github.com/mitchellh/packer/pull/1402) will be open.
 
 #### Debian Testing
 
