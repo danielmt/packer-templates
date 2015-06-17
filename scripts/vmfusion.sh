@@ -1,5 +1,5 @@
 cd /tmp
-mkdir -p /mnt/cdrom
+mkdir -p /mnt/cdrom /mnt/hgfs
 mount -o loop /home/vagrant/linux.iso /mnt/cdrom
 tar zxvf /mnt/cdrom/VMwareTools-*.tar.gz -C /tmp/
 /tmp/vmware-tools-distrib/vmware-install.pl -d
