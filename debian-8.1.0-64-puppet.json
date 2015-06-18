@@ -35,7 +35,7 @@
       "iso_checksum": "{{user `iso_md5`}}",
       "iso_checksum_type": "md5",
       "iso_url": "{{user `iso_url`}}",
-      "shutdown_command": "echo 'halt -p' > shutdown.sh; echo 'vagrant'|sudo -S sh 'shutdown.sh'",
+      "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now",
       "ssh_password": "vagrant",
       "ssh_username": "vagrant",
       "ssh_port": "{{user `ssh_port`}}",
@@ -70,7 +70,7 @@
     "iso_checksum": "{{user `iso_md5`}}",
     "iso_checksum_type": "md5",
     "iso_url": "{{user `iso_url`}}",
-    "shutdown_command": "echo 'vagrant'|sudo -S /sbin/shutdown -hP now",
+    "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now",
     "ssh_password": "vagrant",
     "ssh_username": "vagrant",
     "ssh_port": "{{user `ssh_port`}}",
@@ -88,8 +88,7 @@
   ],
   "post-processors": [
     {
-      "type": "vagrant",
-      "output": "{{user `vm_name`}}.box"
+      "vagrant"
     }
   ],
   "provisioners": [
