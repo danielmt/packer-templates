@@ -13,6 +13,7 @@ echo 'UseDNS no' >> /etc/ssh/sshd_config
 # Fix ssh lockup
 systemctl disable ssh.service
 systemctl enable ssh.socket
+/etc/init.d/ssh restart
 
 # Remove 5s grub timeout to speed up booting
 cat <<EOF > /etc/default/grub
