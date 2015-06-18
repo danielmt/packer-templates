@@ -10,6 +10,10 @@ echo 'vagrant ALL=NOPASSWD:ALL' > /etc/sudoers.d/vagrant
 # Tweak sshd to prevent DNS resolution (speed up logins)
 echo 'UseDNS no' >> /etc/ssh/sshd_config
 
+# Fix ssh lockup
+systemctl disable ssh.service
+systemctl enable ssh.socket
+
 # Remove 5s grub timeout to speed up booting
 cat <<EOF > /etc/default/grub
 # If you change this file, run 'update-grub' afterwards to update
