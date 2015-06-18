@@ -101,7 +101,6 @@
         "virtualbox-iso": {
           "scripts": [
             "scripts/base.sh",
-            "scripts/glb.sh",
             "scripts/vagrant.sh",
             "scripts/virtualbox.sh",
             "scripts/puppet.sh",
@@ -111,7 +110,6 @@
         "vmware-iso": {
           "scripts": [
             "scripts/base.sh",
-            "scripts/glb.sh",
             "scripts/vagrant.sh",
             "scripts/vmfusion.sh",
             "scripts/puppet.sh",
