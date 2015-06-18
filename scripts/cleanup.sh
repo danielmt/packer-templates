@@ -1,7 +1,20 @@
 # Clean up
-apt-get -y remove linux-headers-$(uname -r) build-essential
+# apt-get -y remove linux-headers-$(uname -r) build-essential
+
+# delete X11 libraries
+apt-get -y purge libx11-data xauth libxmuu1 libxcb1 libx11-6 libxext6
+
+# delete obsolete networking
+apt-get -y purge ppp pppconfig pppoeconf
+
+# delete oddities
+apt-get -y purge popularity-contest
+
 apt-get -y autoremove
 apt-get -y clean
+
+# remove
+rm -rf linux.iso VBoxGuestAdditions_*.iso VBoxGuestAdditions_*.iso.?
 
 # Removing leftover leases and persistent rules
 echo "cleaning up dhcp leases"
