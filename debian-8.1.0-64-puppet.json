@@ -87,9 +87,7 @@
   }
   ],
   "post-processors": [
-    {
-      "vagrant"
-    }
+    "vagrant"
   ],
   "provisioners": [
     {
