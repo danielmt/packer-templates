@@ -1,14 +1,14 @@
 # Debian Packer Templates
 
-The current and only template was created for Debian 7.8.0 VM boxes.
+The current and only template was created for a Debian 8.1.0 VM box.
 These boxes are "vanilla" with a minimal setup, 256MB RAM, 1 CPU and includes Puppet.
 
 These settings can be easily changed in vagrant.
 
 ## Prerequisites
 
-* Packer (>= 0.5.0)(http://www.packer.io/downloads.html)
-* Vagrant (>= 1.2.4)(http://downloads.vagrantup.com/)
+* Packer (>= 0.7.5)(http://www.packer.io/downloads.html)
+* Vagrant (>= 1.7.2)(http://downloads.vagrantup.com/)
 * VirtualBox or VMWare
 
 ### Installing Packer via Homebrew
@@ -20,7 +20,7 @@ $ brew install packer
 
 ## Configure the vagrant box
 
-Edit the debian-7-wheezy-virtualbox.json and check the variables at the beginning of the file.
+Edit the debian-8.1.0-64-puppet.json and check the variables at the beginning of the file.
 
 *Note*:
 
@@ -33,36 +33,25 @@ To fix the issue go on http://cdimage.debian.org/debian-cd/current/amd64/iso-cd/
 ## Build vagrant box
 
 ```bash
-$ packer build debian-7-wheezy-virtualbox.json
+$ make build-all
 ```
 
 or optionnaly, select only one provider, for example ```vmware```:
 
 ```bash
-$ packer build -only vmware debian-7-wheezy.json
+$ make build-vmware
 ```
-*NOTE*: Unfortunately Packer has a bug and will not recognize the -only option until [this bug](https://github.com/mitchellh/packer/pull/1402) will be open.
-
-#### Debian Testing
-
-To build a debian 8 testing box (jessie), use the following:
-
-```bash
-$ packer build --only virtualbox debian-8-testing.json
-```
-
-*NOTE*: Debian testing ISO is updated weekly, so, you might need to update the checksum on debian-8-testing.json (iso_md5).
 
 ### Install your new box
 
 ```bash
-$ vagrant box add debian-7-wheezy ./debian-780-wheezy-vbox.box
+$ vagrant box add debian-8.1.0-64-puppet debian-8.1.0-64-puppet-virtualbox.box
 ```
 
 or
 
 ```bash
-$ vagrant box add debian-7-wheezy ./debian-780-wheezy.box
+$ vagrant box add debian-8.1.0-64-puppet debian-8.1.0-64-puppet-vmware.box
 ```
 
 The VM image has been imported to vagrant, it's now available on your system.
@@ -83,7 +72,7 @@ Vagrant.configure("2") do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "debian-780-wheezy"
+  config.vm.box = "debian-8.1.0-64-puppet"
 
   # Make ssh login secure
   # config.ssh.private_key_path = '~/.ssh/id_rsa'
